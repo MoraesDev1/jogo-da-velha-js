@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Jogar</title>
 </head>
 
@@ -13,122 +14,23 @@
         <div class="container">
             <div class="column">
                 <div class="row">
-                    <button id="card1" class="card" onclick="verificaSeEstaDisponivel('card1')"></button>
-                    <button id="card2" class="card" onclick="verificaSeEstaDisponivel('card2')"></button>
-                    <button id="card3" class="card" onclick="verificaSeEstaDisponivel('card3')"></button>
+                    <button id="card1" class="card" onclick="clickCard('card1')"></button>
+                    <button id="card2" class="card" onclick="clickCard('card2')"></button>
+                    <button id="card3" class="card" onclick="clickCard('card3')"></button>
                 </div>
                 <div class="row">
-                    <button id="card4" class="card" onclick="verificaSeEstaDisponivel('card4')"></button>
-                    <button id="card5" class="card" onclick="verificaSeEstaDisponivel('card5')"></button>
-                    <button id="card6" class="card" onclick="verificaSeEstaDisponivel('card6')"></button>
+                    <button id="card4" class="card" onclick="clickCard('card4')"></button>
+                    <button id="card5" class="card" onclick="clickCard('card5')"></button>
+                    <button id="card6" class="card" onclick="clickCard('card6')"></button>
                 </div>
                 <div class="row">
-                    <button id="card7" class="card" onclick="verificaSeEstaDisponivel('card7')"></button>
-                    <button id="card8" class="card" onclick="verificaSeEstaDisponivel('card8')"></button>
-                    <button id="card9" class="card" onclick="verificaSeEstaDisponivel('card9')"></button>
+                    <button id="card7" class="card" onclick="clickCard('card7')"></button>
+                    <button id="card8" class="card" onclick="clickCard('card8')"></button>
+                    <button id="card9" class="card" onclick="clickCard('card9')"></button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        class Jogador {
-            constructor(nome, simbolo) {
-                this.nome = nome;
-                this.simbolo = simbolo;
-            }
-        }
-
-        let jogador1 = new Jogador("Will Smith", "X");
-        let jogador2 = new Jogador("Kevin Hart", "O")
-        let jogadorAtual = jogador1;
-        let jogadas = 0;
-
-        function trocaJogadorAtual() {
-            if (jogadorAtual.simbolo == "X") {
-                jogadorAtual = jogador2;
-            } else {
-                jogadorAtual = jogador1;
-            }
-        }
-
-        function verificaResultado() {
-            let tabuleiro = [
-                ["A", "A", "A"],
-                ["A", "A", "A"],
-                ["A", "A", "A"]
-            ];
-
-            let linha = 0;
-            let coluna = 0;
-
-            for (let index = 1; index <= 9; index++) {
-                var simboloDoCard = document.getElementById(`card${index}`).textContent;
-                tabuleiro[linha][coluna] = simboloDoCard;
-
-                if (coluna < 2) {
-                    coluna++;
-                } else if (linha < 2) {
-                    linha++;
-                }
-            }
-
-            let posicaoA;
-            let posicaoB;
-            let posicaoC;
-
-            for (let linha = 0; linha <= 2; linha++) {
-                for (let coluna = 0; coluna <= 2; coluna++) {
-                    if (coluna == 0) {
-                        posicaoA = tabuleiro[linha][coluna];
-                    } else if (coluna == 1) {
-                        posicaoB = tabuleiro[linha][coluna];
-                    } else {
-                        posicaoC = tabuleiro[linha][coluna];
-                    }
-                }
-                if (posicaoA == posicaoB && posicaoA == posicaoC && posicaoA != "") {
-                    return posicaoA;
-                }
-            }
-        }
-
-        function verificaSeEstaDisponivel(cardId) {
-            var valueCard = document.getElementById(cardId).textContent;
-            if (valueCard == "") {
-                fazerJogada(cardId);
-                jogadas++;
-            } else {
-                alert("Não pode");
-            }
-
-        }
-
-
-
-        function fazerJogada(cardId) {
-            document.getElementById(cardId).textContent = jogadorAtual.simbolo;
-
-            let resultado = verificaResultado(); // Verifica o resultado após a jogada
-            if (resultado == jogador1.simbolo) {
-                setTimeout(function () {
-                    alert(`Parabéns ${jogador1.nome}, você venceu!`);
-                }, 100); // Adiciona um pequeno atraso antes de exibir o alerta
-            } else if (resultado == jogador2.simbolo) {
-                setTimeout(function () {
-                    alert(`Parabéns ${jogador2.nome}, você venceu!`);
-                }, 100); // Adiciona um pequeno atraso antes de exibir o alerta
-            } else if (jogadas == 9) {
-                setTimeout(function () {
-                    alert("Empatou!");
-                }, 100); // Adiciona um pequeno atraso antes de exibir o alerta
-            }
-
-            trocaJogadorAtual();
-        }
-
-    </script>
-
 </body>
 
 </html>
