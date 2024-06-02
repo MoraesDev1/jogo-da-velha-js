@@ -1,3 +1,47 @@
+let nomeP1;
+let nomeP2;
+let jogadas = 0;
+let tabuleiro = [
+    ["card1", "card2", "card3"],
+    ["card4", "card5", "card6"],
+    ["card7", "card8", "card9"]
+];
+
+function verificaNomes() {
+    nomeP1 = document.getElementById("player1Name").value;
+    nomeP2 = document.getElementById("player2Name").value;
+
+    while (nomeP1 == "" || nomeP2 == "") {
+        if (nomeP1 == "") {
+            alert("Nome não informado para o Jogador 1, favor informe um nome");
+            break;
+        } else if (nomeP2 == "") {
+            alert("Nome não informado para o Jogador 2, favor informe um nome");
+            break;
+        }
+    }
+
+    if (nomeP1 != "" && nomeP2 != "") {
+        navegarParaJogarPvP();
+    }
+}
+
+function navegarParaTipoDeJogo() {
+    window.location.href = 'tipoDeJogo.html';
+}
+
+function navegarParaJogarPvP() {
+    window.location.href = 'jogarPvP.html';
+}
+
+function navegarParaCadastroPvP() {
+    window.location.href = 'cadastroPvP.html';
+}
+
+function navegarParaCadastroPvM() {
+    window.location.href = 'cadastroPvM.html';
+}
+
 class Jogador {
     constructor(nome, simbolo) {
         this.nome = nome;
@@ -5,16 +49,13 @@ class Jogador {
     }
 }
 
-let tabuleiro = [
-    ["card1", "card2", "card3"],
-    ["card4", "card5", "card6"],
-    ["card7", "card8", "card9"]
-];
 
-let jogador1 = new Jogador("Will Smith", "X");
-let jogador2 = new Jogador("Kevin Hart", "O")
+
+let jogador1 = new Jogador("nomeP1", "X");
+let jogador2 = new Jogador("nomeP2", "O");
 let jogadorAtual = jogador1;
-let jogadas = 0;
+
+
 
 function clickCard(cardId) {
     if (verificaSeEstaDisponivel(cardId)) {
@@ -22,7 +63,7 @@ function clickCard(cardId) {
         verificaResultado();
         trocaJogadorAtual();
     } else {
-        alert("Não pode");
+        alert("Posição já está ocupada, tente outra!");
     }
 }
 
@@ -102,3 +143,5 @@ function fazerJogada(cardId) {
     }
     jogadas++;
 }
+
+
