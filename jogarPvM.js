@@ -13,9 +13,8 @@ class Jogador {
 }
 
 let nomeP1 = localStorage.getItem("nomeP1");
-let nomeP2 = localStorage.getItem("nomeP2");
 let jogador1 = new Jogador(nomeP1, "X");
-let jogador2 = new Jogador(nomeP2, "O");
+let jogador2 = new Jogador("Máquina", "O");
 let jogadorAtual = jogador1;
 
 
@@ -24,9 +23,23 @@ function clickCard(cardId) {
         fazerJogada(cardId);
         verificaResultado();
         trocaJogadorAtual();
+        jogadaMaquina();
     } else {
         alert("Posição já está ocupada, tente outra!");
     }
+}
+
+function jogadaMaquina() {
+    const numeroAleatorio = Math.floor(Math.random() * 9) + 1;
+    setTimeout(function () {
+        if (verificaSeEstaDisponivel("card" + numeroAleatorio)) {
+            fazerJogada("card" + numeroAleatorio);
+            verificaResultado();
+            trocaJogadorAtual();
+        } else {
+            jogadaMaquina();
+        }
+    }, 500);
 }
 
 function trocaJogadorAtual() {
@@ -65,6 +78,7 @@ function verificaResultado() {
         setTimeout(function () {
             window.location.href = 'index.html';
         }, 200);
+
     } else if (simboloVencedor == jogador2.simbolo) {
         setTimeout(function () {
             alert(`Parabéns ${jogador2.nome}, você venceu!`);
@@ -72,6 +86,7 @@ function verificaResultado() {
         setTimeout(function () {
             window.location.href = 'index.html';
         }, 200);
+
     } else if (jogadas == 9) {
         setTimeout(function () {
             alert("Empatou!");
@@ -79,6 +94,7 @@ function verificaResultado() {
         setTimeout(function () {
             window.location.href = 'index.html';
         }, 200);
+
     }
 }
 

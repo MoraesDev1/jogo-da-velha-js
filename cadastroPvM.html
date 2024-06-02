@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>Jogo da velha</title>
+    <title>Cadastro PvM</title>
 </head>
 
 <body>
     <div class="filter">
         <div class="container">
             <div class="column">
-                <p class="title-menu">Menu</p>
-                <button class="button" onclick="navegarParaTipoDeJogo()">Jogar</button>
-                <button class="button">Ranking</button>
-                <button class="button" onclick="encerrarAplicacao()">Sair</button>
+                <form onsubmit="verificaNome()"></form>
+                <h2>Informe seu nome</h2>
+                <p>Jogador [X]:</p>
+                <input id="player1Name" type="text">
+                <br>
+                <button class="button" onclick="verificaNome()">Começar</button>
             </div>
         </div>
     </div>

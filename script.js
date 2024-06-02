@@ -6,12 +6,31 @@ function navegarParaJogarPvP() {
     window.location.href = 'jogarPvP.html';
 }
 
+function navegarParaJogarPvM() {
+    window.location.href = 'jogarPvM.html';
+}
+
 function navegarParaCadastroPvP() {
     window.location.href = 'cadastroPvP.html';
 }
 
 function navegarParaCadastroPvM() {
     window.location.href = 'cadastroPvM.html';
+}
+
+function verificaNome() {
+    let nomeP1 = document.getElementById("player1Name").value;
+
+    if (nomeP1 == "") {
+        alert("Nome não informado para o Jogador, favor informe um nome");
+        return;
+    }
+
+    if (nomeP1 != "") {
+        localStorage.setItem("nomeP1", nomeP1);
+    }
+
+    navegarParaJogarPvM();
 }
 
 function verificaNomes() {
@@ -36,3 +55,6 @@ function verificaNomes() {
     navegarParaJogarPvP();
 }
 
+function encerrarAplicacao() {
+    window.close();
+}
