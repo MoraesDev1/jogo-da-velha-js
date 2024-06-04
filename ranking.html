@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>Jogo da velha</title>
+    <title>Ranking</title>
 </head>
 
 <body>
     <div class="filter">
         <div class="container">
             <div class="column">
-                <p class="title-menu">Menu</p>
-                <button class="button" onclick="navegarParaTipoDeJogo()">Jogar</button>
-                <button class="button" onclick="navegarParaRanking()">Ranking</button>
-                <button class="button" onclick="encerrarAplicacao()">Sair</button>
+                <p class='title-menu'>Ranking</p>
+                <div class="row" id="rankingList"></div>
+                <button class="button" onclick="navegarParaMenu()">Voltar ao Menu</button>
             </div>
         </div>
     </div>
+    <script>
+        exibeRanking();
+    </script>
 </body>
 
 </html>

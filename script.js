@@ -1,3 +1,9 @@
+if (localStorage.getItem('rankingList') != null) {
+    var rankingList = JSON.parse(localStorage.getItem('rankingList'));
+} else {
+    var rankingList = [];
+}
+
 function navegarParaTipoDeJogo() {
     window.location.href = 'tipoDeJogo.html';
 }
@@ -18,6 +24,14 @@ function navegarParaCadastroPvM() {
     window.location.href = 'cadastroPvM.html';
 }
 
+function navegarParaMenu() {
+    window.location.href = 'index.html';
+}
+
+function navegarParaRanking() {
+    window.location.href = 'ranking.html';
+}
+
 function verificaNome() {
     let nomeP1 = document.getElementById("player1Name").value;
 
@@ -29,7 +43,6 @@ function verificaNome() {
     if (nomeP1 != "") {
         localStorage.setItem("nomeP1", nomeP1);
     }
-
     navegarParaJogarPvM();
 }
 
@@ -56,5 +69,25 @@ function verificaNomes() {
 }
 
 function encerrarAplicacao() {
+    localStorage.clear();
     window.close();
+}
+
+if (localStorage.getItem("vencedorAtual") != null) {
+    var vencedorAtual = localStorage.getItem("vencedorAtual");
+    rankingList.push(vencedorAtual);
+    localStorage.setItem('rankingList', JSON.stringify(rankingList));
+    localStorage.removeItem("vencedorAtual");
+}
+
+function exibeRanking() {
+
+    if (rankingList.length > 0) {
+        var telaRanking = document.getElementById("rankingList");
+        for (let index = 0; index < rankingList.length; index++) {
+            var itemRanking = document.createElement('p');
+            itemRanking.textContent = rankingList[index];
+            telaRanking.appendChild(itemRanking);
+        }
+    }
 }

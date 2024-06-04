@@ -62,6 +62,8 @@ function verificaResultado() {
         setTimeout(function () {
             alert(`Parabéns ${jogador1.nome}, você venceu!`);
         }, 50);
+        var vencedorAtual = jogador1.nome;
+        localStorage.setItem('vencedorAtual', vencedorAtual);
         setTimeout(function () {
             window.location.href = 'index.html';
         }, 200);
@@ -69,6 +71,8 @@ function verificaResultado() {
         setTimeout(function () {
             alert(`Parabéns ${jogador2.nome}, você venceu!`);
         }, 50);
+        var vencedorAtual = jogador2.nome;
+        localStorage.setItem('vencedorAtual', vencedorAtual);
         setTimeout(function () {
             window.location.href = 'index.html';
         }, 200);
