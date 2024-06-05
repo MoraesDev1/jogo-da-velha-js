@@ -70,7 +70,7 @@ function verificaNomes() {
 
 function encerrarAplicacao() {
     localStorage.clear();
-    window.close();
+    window.location.href = 'fim.html';
 }
 
 if (localStorage.getItem("vencedorAtual") != null) {
@@ -85,8 +85,13 @@ function exibeRanking() {
     if (rankingList.length > 0) {
         var telaRanking = document.getElementById("rankingList");
         for (let index = 0; index < rankingList.length; index++) {
-            var itemRanking = document.createElement('p');
-            itemRanking.textContent = rankingList[index];
+
+            var itemRanking = document.createElement('div');
+            var conteudoItem = document.createElement('p');
+
+            conteudoItem.textContent = `${index + 1}º ${rankingList[index]}`;
+            itemRanking.id = "itemRanking";
+            itemRanking.appendChild(conteudoItem);
             telaRanking.appendChild(itemRanking);
         }
     }

@@ -62,3 +62,22 @@ body {
     margin: 1%;
     border-radius: 10px;
 }
+
+#rankingList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 99%;
+    height: 80%;
+}
+
+#rankingList::-webkit-scrollbar {
+    width: 12px;
+}
+
+#rankingList::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
